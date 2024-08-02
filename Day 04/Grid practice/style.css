@@ -1,0 +1,53 @@
+.container {
+  background-color: yellow;
+  width: auto;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px 10px;
+}
+
+.items {
+  background-color: #ffffff;
+  margin: 1rem;
+  padding: 1rem;
+  color: black;
+}
+
+.item-1 {
+  background: url("https://media.licdn.com/dms/image/D4D12AQEe3GDiqXH4IQ/article-cover_image-shrink_720_1280/0/1692794582536?e=2147483647&v=beta&t=0FxYSovo5cpxJppFcsrQCfLVSk3aQb02tafwLH-81qs");
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 50vw;
+  height: 40vh;
+}
+
+.item-3 {
+  background: url("https://images.inc.com/uploaded_files/image/1024x576/software-computer-code-1940x900_35196.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  height: auto;
+  width: 40vw;
+}
+
+.item-2 {
+  background: url("https://referralrock.com/blog/wp-content/uploads/2018/03/doordash-referral-link.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-column-start: 3;
+  grid-row-start: 1;
+  height: auto;
+}
+
+.item-4,
+.item-5,
+.item-6,
+.item-7 {
+  background: url("https://www.w3schools.com/codeeditor.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
