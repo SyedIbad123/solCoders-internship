@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+h1{
+  text-align: center;
+  margin: 1rem;
+  font-size: 3rem;  
+}
+
+h2{
+  text-align: center;
+  margin: 1rem;
+  font-size: 1.5rem; 
+}
+
+
+.section{
+
+  width: 100vw;
+  display: flex;
+  gap:5rem;
+  flex-direction: column;
+  background:yellow;
+  
+}
+
+.test{
+  display:block;
+}
+
+.cartDiv{
+  width: 100vw;
+  background-color: red;
+  height: 40vh;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.test{
+  width: 100vw;
+}
+
+
+.clientCards {
+  background-color: rgb(237, 237, 237);
+  padding: 1rem;
+  width: 25vw;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  margin:2rem 1rem;
+}
+
+.btn-div{
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex:1;
+}
+
+
+.prev-btn{
+  margin:0.5rem;
+  padding:0.5rem 2rem;
+  background-color: #ac0000;
+  color: white;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.prev-btn:hover{
+  background-color: #ff0000;
+}
+
+
+.next-btn{
+  margin:0.5rem;
+  padding:0.5rem 2rem;
+  background-color: #008307;
+  color: white;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.next-btn:hover{
+  background-color: #00ca1e;
+}
+
+
+.active{
+  visibility: visible;  
+}
+
+.hidden{
+  visibility: hidden;
+}

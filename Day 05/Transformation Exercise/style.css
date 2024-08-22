@@ -18,6 +18,15 @@ section{
     align-items: center;
 }
 
+@keyframes rotateBox {
+    0%{
+        transform:rotate(-5deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+
 .container{
     max-width: 500px;
     width: 30vw;
@@ -30,12 +39,12 @@ section{
     border-radius: 20px;
     transform: rotate(-5deg);
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.1s ease;
 }
 
 
 .container:hover{
-    transform: rotate(0deg);
+    animation: rotateBox 1s ease;
 }
 
 .div_para{
@@ -80,5 +89,5 @@ p{
 }
 
 .container:hover .img_div img {
-    transform: scale(1.15); /* Scale up the image on hover */
+    transform: scale(1.15);
 }
