@@ -1,11 +1,34 @@
-import { atom } from "recoil";
+  import { atom,atomFamily } from "recoil";
 
-export const productState = atom({
-  key: "products",
-  default: [],
-});
+  export const productState = atom({
+    key: "products",
+    default: {},
+  });
 
-export const loadingState = atom({
-  key: "loadingState",
-  default: false, // Initially, not loading
-});
+  export const loadingState = atom({
+    key: "loadingState",
+    default: false, 
+  });
+
+  export const imageLoadingState = atomFamily({
+    key: "imageLoading",
+    default: true,
+  });
+
+
+  export const singleProductState = atom({
+    key:"singleProduct",
+    default:{},
+  })
+
+
+  export const limitProductState = atom({
+    key:"limitProduct",
+    default:30,
+  })
+
+
+  export const searchProductState = atom({
+    key:"searchProduct",
+    default:"",
+  })

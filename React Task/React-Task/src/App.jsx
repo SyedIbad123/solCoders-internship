@@ -6,7 +6,8 @@ import {
   LoginPage,
   HomePage,
   SignUpPage,
-  AboutPage
+  AboutPage,
+  ProductDetails
 } from './index.js'
 
 import {
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
       <Route element={<ProtectedRoute/>}>
         <Route path='/home' element={<HomePage/>}/>
         <Route path='/about' element={<AboutPage/>}/>
+        <Route path='/productsDetails/:id' element={<ProductDetails/>}/>
       </Route>
 
 

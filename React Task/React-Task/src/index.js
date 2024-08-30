@@ -5,6 +5,7 @@ import SignUpPage from "./Pages/Sign Up/SignUp"
 import RootLayout from "./Layout/RootLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 import UnProtectedRoute from "./components/UnProtectedRoute";
+import ProductDetails from "./Pages/Product Details/ProductDetails";
 
 import {AuthProvider} from "./Context/AuthContext";
 
@@ -16,5 +17,6 @@ export {
     LoginPage,
     SignUpPage,
     HomePage,
-    AboutPage
+    AboutPage,
+    ProductDetails
 }

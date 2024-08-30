@@ -17,8 +17,12 @@ const LoginCard = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-
     const loginCredentials = localStorage.getItem("user");
+
+    if(!loginCredentials) {
+      return ToastFailure("User not found. Please SignUp");
+    }
+
     const {email,password} = JSON.parse(loginCredentials);
 
     const formElements = e.target.elements;
@@ -34,7 +38,7 @@ const LoginCard = () => {
     if (user.email === email && user.password === password) {
       setLogin(true);
       ToastSucces("Login Successful");
-    } else {
+    } else if(user.email !== email || user.password !== password) {
       ToastFailure("Login Failed");
     }
   }
