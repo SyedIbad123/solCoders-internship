@@ -1,36 +1,29 @@
+const Select = ({item,setProducts,category}) => {
+  
+  const distinct = [{slug: 'all', name : "All"}, ...category.map(item => item)];
 
-
-const Select = ({item,setProducts}) => {
-
-
-  const distinct = Array.from(new Set(item?.products.map(product => product.category)));
-  const categories = distinct.unshift("All");
-
-  function handleChange(e){
-    const query = e.target.value;
-    console.log("query : ", query);
-
-    if(query === "All"){
+  async function handleChange(e){
+    const slug = e.target.value;
+    if(slug === "all"){
       setProducts(item);
-      return;
+      return; 
     }
-    const filteredProducts = item?.products.filter(product => product.category === query);
+    const url = `https://dummyjson.com/products/category/${slug}`;
+    const res = await fetch(url);
+    const body = await res.json();
+    const result = body.products;
     setProducts({
-      ...item,
-      products: filteredProducts.length > 0 ? filteredProducts : [],
-      total: filteredProducts.length,
+      ...item, 
+      products: result,
     });
   }
-
-  
-
 
 
   return (
     <div  className="w-full">
       <select className="w-6/12 p-2 m-2 border border-gray-500 rounded-md" onChange={handleChange}>
       {distinct.map((product,index) => (
-        <option key={index} value={product} >{product}</option>
+        <option key={index} value={product.slug} >{product.name}</option>
       ))}
       </select>
     </div>

@@ -16,7 +16,7 @@ function debounce(func, delay) {
 const SearchInput = ({ item, setProducts }) => {
   const [search, setSearch] = useRecoilState(searchProductState);
 
-  const handleChange = useCallback(
+   const handleChange = useCallback(
     debounce(async (e) => {
       const query = e.target.value.toLowerCase();
       setSearch(query);
@@ -24,13 +24,14 @@ const SearchInput = ({ item, setProducts }) => {
         setProducts(item);
         return;
       }
-      const filteredProducts = item?.products.filter((product) =>
-        product.title.toLowerCase().includes(query)
-      );
+
+      const url = `https://dummyjson.com/products/search?q=${query}`;
+      const res = await fetch(url);
+      const body = await res.json();
+      const result = body.products;
       setProducts({
         ...item,
-        products: filteredProducts.length > 0 ? filteredProducts : [],
-        total: filteredProducts.length, 
+        products: result.length > 0 ? result : [],
       });
 
     }, 200),

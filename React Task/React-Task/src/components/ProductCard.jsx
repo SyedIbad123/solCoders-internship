@@ -76,8 +76,8 @@ const ProductCard = () => {
                 <h2 className="font-bold text-xl">Price</h2>
                 {discount ? (
                   <div className="flex flex-row gap-8">
-                    <h4 className="line-through">${singleProduct.price}</h4>
-                    <h4 className="underline font-semibold">${discountPrice}</h4>
+                    <h4 className="line-through">${singleProduct?.price}</h4>
+                    <h4 className="underline font-semibold">${discountPrice.toFixed(2)}</h4>
                   </div>
                 ) : null}
                 </div>
@@ -91,6 +91,7 @@ const ProductCard = () => {
                 <div className="flex flex-row">
                   {starRatingArr.map((_, index) => (
                     <svg
+                      key={index}
                       xmlns="http://www.w3.org/2000/svg"
                       fill={index < starRatingFill ? "yellow" : "none"}
                       viewBox="0 0 24 24"
