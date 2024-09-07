@@ -1,19 +1,26 @@
-import {useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import LoaderSpinner from "./LoaderSpinner";
 import { imageLoadingState } from "../Services/Recoil";
 
-const ImageLoading = ({ src, alt, productId,size }) => {
+const ImageLoading = ({ props, src, alt, productId, size }) => {
   const isImageLoading = useRecoilValue(imageLoadingState(productId));
   const setImageLoading = useSetRecoilState(imageLoadingState(productId));
-  return ( 
+  return (
     <>
       {isImageLoading && (
-        <LoaderSpinner color="black" loading={isImageLoading} size={50} />
+        <LoaderSpinner
+          color="black"
+          loading={isImageLoading}
+          size={50}
+          className="text-center"
+        />
       )}
       <img
-        src={src} 
+        src={src}
         alt={alt}
-        className={`${size === true ? "w-full rounded-2xl" : "w-16 h-16 rounded-full"} object-cover mx-auto`}
+        className={`${
+          size === true ? "w-full rounded-2xl" : "w-16 h-16 rounded-full"
+        } object-cover mx-auto`}
         onLoad={() => setImageLoading(false)}
         style={{ display: isImageLoading ? "none" : "block" }}
       />

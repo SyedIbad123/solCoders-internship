@@ -1,10 +1,5 @@
 import { atom,atomFamily } from "recoil";
 
-export const AllProductsState = atom({
-  key: "AllProducts",
-  default: [],
-});
-
 export const productState = atom({
   key: "products",
   default: {},
