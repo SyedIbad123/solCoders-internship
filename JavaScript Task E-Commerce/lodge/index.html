@@ -8,6 +8,8 @@
     <title>Document</title>
   </head>
   <body>
+    <!-- header section  -->
+
     <header class="header">
       <nav class="navbar">
         <ul class="nav-items">
@@ -21,16 +23,13 @@
           </div>
 
           <div class="nav-links">
-            <li><a href="">home</a></li>
-            <li><a href="">about</a></li>
-            <li><a href="">jwellery</a></li>
+            <li><a href="/index.html">home</a></li>
+            <li><a href="/product/product.html">shop</a></li>
+            <li><a href="">cart</a></li>
             <li><a href="">contact us</a></li>
             <li><a href="">login</a></li>
             <select id="category-dropdown" name="" id="">
               <option value="category">category</option>
-              <option value="jwellery">jwellery</option>
-              <option value="rings">rings</option>
-              <option value="jeans">jeans</option>
             </select>
           </div>
 
@@ -44,8 +43,12 @@
       </nav>
     </header>
 
+
     <main class="main">
+
+      <!-- banner section  -->
       <section class="banner-section">
+
         <div class="banner-content">
           <div class="new-collectionDiv">
             <h3 class="new-collection">New Collection</h3>
@@ -67,6 +70,7 @@
         </div>
 
         <div class="banner-imgDiv">
+          
           <div class="banner-bgImg">
             <img class="front-img" src="./images/Shape 1 copy.png" alt="" />
             <img class="back-img" src="./images/Shape 1.png" alt="" />
@@ -101,64 +105,140 @@
         </div>
       </section>
 
+      <!-- category section -->
       <section class="category-section">
-        <div>
-          <div>
-            <div>
-              <p></p>
-              <p></p>
+        <div class="category-div" id="category-div"></div>
+      </section>
+
+      <!-- about section  -->
+      <section class="about-section">
+        
+        
+        <div class="about-info">
+
+          <div class="about-infoDiv">
+
+            <div class="about-headingDiv">
+              <h3>About Jwellery Shop</h3>
+              <img src="./images/Rectangle 29.png" alt="">
             </div>
-            <img src="" alt="" />
-            <p></p>
+
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+              minima itaque ab totam vitae fuga animi expedita vero enim
+              corrupti perferendis repellat, quas quia. Dolor voluptate
+              asperiores soluta mollitia officia sint odit sunt, impedit
+              explicabo laborum, dicta maiores vitae delectus!
+            </p>
+
+            <button>Read More</button>
+
           </div>
 
-          <div>
-            <div>
-              <p></p>
-              <p></p>
-            </div>
-            <img src="" alt="" />
-            <p></p>
+          <div class="about-img">
+            <img src="./images/gold-bangles-500x500.png" alt="">
           </div>
 
-          <div>
-            <div>
-              <p></p>
-              <p></p>
-            </div>
-            <img src="" alt="" />
-            <p></p>
+        </div>
+
+
+        <div class="about-ellipse">
+          <img src="./images/Ellipse 5 copy 3.png" alt="" />
+        </div>
+
+        
+      </section>
+
+      <!-- special section -->
+      <section class="special-section">
+        <div class="ellipse-div">
+          <img src="./images/Ellipse 5 copy 2.png" alt="" />
+        </div>
+
+        <div class="special-div">
+          <div class="info">
+            <h2>special</h2>
+            <h3>wedding ring</h3>
+            <button>Buy Now</button>
+          </div>
+
+          <div class="img-div">
+            <img src="./images/Layer 16.png" alt="" />
           </div>
         </div>
       </section>
 
+      <!-- testimonial section  -->
+      <section class="testimonial-section">
+        <div class="testimonial-div">
+          <h2>testimonial</h2>
+          <img src="./images/Rectangle 29.png" alt="" />
+        </div>
+
+        <div class="para-div">
+          <p>What is says our customer</p>
+        </div>
+
+        <div class="feedback-div">
+          <img src="./images/-1.png" alt="" />
+
+          <div class="testimonial-feedback">
+            <div class="testimonial-imgDiv">
+              <img src="./images/Layer 17.png" alt="" />
+            </div>
+
+            <div class="testimonial-intro">
+              <p>Aliqua</p>
+              <span class="testimonial-span">Consectetur adipiscing</span>
+            </div>
+
+            <div class="testimonial-description">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Voluptate amet maiores architecto odit distinctio quas corrupti
+                minima, aperiam dolores accusamus.
+              </p>
+            </div>
+          </div>
+
+          <img src="./images/.png" alt="" />
+        </div>
+      </section>
+
+      <!-- contact section  -->
       <section class="contact-section">
         <h2>Contact Us</h2>
 
         <div class="contact-div">
-
           <div class="form-div">
-            <form action="">
-              <input type="text" />
-              <input type="text" />
-              <input
-                type="text"
-              />
-              <input type="text" />
-              <textarea name="" id=""></textarea>
+            <form>
+              <input type="text" placeholder="Name" />
+              <input type="email" placeholder="Email" />
+              <input type="tel" placeholder="Phone" />
+              <textarea name="" id="" placeholder="Message"></textarea>
+              <button class="form-btn">send</button>
             </form>
           </div>
 
           <div class="map-div">
-            <img src="./images/Layer 18.png" alt="">
+            <iframe
+              class="map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.15828003818!2d67.05781667487977!3d24.85844314533922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f61f7ff7ffb%3A0x4a327d1cb63b0875!2sSolCoders!5e0!3m2!1sen!2s!4v1725952156791!5m2!1sen!2s"
+              width="600"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
 
           <div>
             <img src="./images/Ellipse 5 copy 3.png" alt="" />
           </div>
         </div>
-
       </section>
+
     </main>
 
     <footer class="footer">
@@ -217,5 +297,7 @@
         </div>
       </section>
     </footer>
+
+
   </body>
 </html>
