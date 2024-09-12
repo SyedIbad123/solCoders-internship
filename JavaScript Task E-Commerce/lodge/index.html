@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
     <script src="./home.js" defer></script>
-    <title>Document</title>
+    <title>Home</title>
   </head>
   <body>
     <!-- header section  -->
@@ -28,14 +28,29 @@
             <li><a href="">cart</a></li>
             <li><a href="">contact us</a></li>
             <li><a href="">login</a></li>
-            <select id="category-dropdown" name="" id="">
-              <option value="category">category</option>
-            </select>
+
+            <div class="dropdown">
+              <button class="dropbtn" onclick="showDropdown()">
+                CATEGORIES
+                <i class="fa fa-caret-down"></i>
+              </button>
+
+              <div class="dropdown-content" id="myDropdown"></div>
+            </div>
           </div>
 
           <div>
-            <li><a href=""></a></li>
+            <li>
+              <img
+                class="shopping-cartImg"
+                id="shopping-cartImg"
+                src="./images/shopping-cart.png"
+                alt="shopping-cart"
+                onclick="openSlider()"
+              />
+            </li>
           </div>
+
           <div>
             <img src="./images/_.png" alt="" />
           </div>
@@ -43,12 +58,17 @@
       </nav>
     </header>
 
+    <main class="main" id="main">
 
-    <main class="main">
+      <!-- cart slider -->
+      <section class="cartSlider-section" id="cart-slider">
+
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSlider()">&times;</a>
+
+      </section>
 
       <!-- banner section  -->
       <section class="banner-section">
-
         <div class="banner-content">
           <div class="new-collectionDiv">
             <h3 class="new-collection">New Collection</h3>
@@ -70,7 +90,6 @@
         </div>
 
         <div class="banner-imgDiv">
-          
           <div class="banner-bgImg">
             <img class="front-img" src="./images/Shape 1 copy.png" alt="" />
             <img class="back-img" src="./images/Shape 1.png" alt="" />
@@ -112,15 +131,11 @@
 
       <!-- about section  -->
       <section class="about-section">
-        
-        
         <div class="about-info">
-
           <div class="about-infoDiv">
-
             <div class="about-headingDiv">
               <h3>About Jwellery Shop</h3>
-              <img src="./images/Rectangle 29.png" alt="">
+              <img src="./images/Rectangle 29.png" alt="" />
             </div>
 
             <p>
@@ -132,21 +147,16 @@
             </p>
 
             <button>Read More</button>
-
           </div>
 
           <div class="about-img">
-            <img src="./images/gold-bangles-500x500.png" alt="">
+            <img src="./images/gold-bangles-500x500.png" alt="" />
           </div>
-
         </div>
-
 
         <div class="about-ellipse">
           <img src="./images/Ellipse 5 copy 3.png" alt="" />
         </div>
-
-        
       </section>
 
       <!-- special section -->
@@ -238,7 +248,6 @@
           </div>
         </div>
       </section>
-
     </main>
 
     <footer class="footer">
@@ -297,7 +306,6 @@
         </div>
       </section>
     </footer>
-
 
   </body>
 </html>

@@ -1,0 +1,161 @@
+.selected-categorySection {
+  height: 230vh;
+  width: 100vw;
+  left: 10%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.front-img {
+  z-index: 1;
+  position: absolute;
+}
+
+.back-img {
+  position: absolute;
+  left: 1%;
+}
+
+.category-heading {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  font-size: 4rem;
+  z-index: 10;
+  letter-spacing: 2px;
+  text-shadow: 10px 2px 2px rgba(255, 255, 0, 0.676);
+}
+
+.category-div {
+  padding: 2rem 2rem;
+  position: absolute;
+  top: 30%;
+  right: 15%;
+  height: 120vh;
+  width: 90%;
+  background-color: transparent;
+  z-index: 100;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+
+.single-product {
+  padding: 2rem 2rem;
+  height: 50vh;
+  width: 18vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: white;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  gap: 0.5rem;
+}
+
+.single-product a {
+  text-transform: capitalize;
+  cursor: pointer;
+  position: relative; 
+  text-decoration: none;
+  color: black;
+}
+
+.single-product a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px; 
+  width: 0;
+  height: 2px;
+  background-color: black;
+  transition: width 0.2s ease-in;
+}
+
+.single-product a:hover::after {
+  width: 100%; 
+}
+
+@keyframes categoryUnderline {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 50%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.single-productImgDiv {
+  width: 100%;
+  height: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.single-productImg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  object-fit: contain;
+}
+
+.single-productImg:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.single-product button {
+  padding: 0.5rem 2rem;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+
+.loader {
+  border: 16px solid #000000; /* Light grey */
+  border-top: 16px solid #ff9501; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 0.8s linear infinite;
+  position: absolute;
+  z-index: 100;
+  top: 120%;
+  left: 45%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
