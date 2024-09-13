@@ -5,14 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
     <script src="./home.js" defer></script>
+    <script src="./product/product.js" defer></script>
     <title>Home</title>
   </head>
   <body>
     <!-- header section  -->
 
     <header class="header">
+
+      <div class="linesDiv">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
       <nav class="navbar">
+
         <ul class="nav-items">
+
           <div class="nav-logoDiv">
             <img
               class="nav-logo"
@@ -25,9 +35,8 @@
           <div class="nav-links">
             <li><a href="/index.html">home</a></li>
             <li><a href="/product/product.html">shop</a></li>
-            <li><a href="">cart</a></li>
-            <li><a href="">contact us</a></li>
-            <li><a href="">login</a></li>
+            <li><a href="/cart/cart.html">cart</a></li>
+           
 
             <div class="dropdown">
               <button class="dropbtn" onclick="showDropdown()">
@@ -51,9 +60,7 @@
             </li>
           </div>
 
-          <div>
-            <img src="./images/_.png" alt="" />
-          </div>
+         
         </ul>
       </nav>
     </header>
@@ -64,12 +71,15 @@
       <section class="cartSlider-section" id="cart-slider">
 
         <a href="javascript:void(0)" class="closebtn" onclick="closeSlider()">&times;</a>
+        <h2>Cart</h2>
 
       </section>
 
       <!-- banner section  -->
       <section class="banner-section">
+
         <div class="banner-content">
+
           <div class="new-collectionDiv">
             <h3 class="new-collection">New Collection</h3>
             <div class="new-collection-line"></div>
@@ -87,9 +97,11 @@
             <button>Shop Now</button>
             <p>01</p>
           </div>
+          
         </div>
 
         <div class="banner-imgDiv">
+
           <div class="banner-bgImg">
             <img class="front-img" src="./images/Shape 1 copy.png" alt="" />
             <img class="back-img" src="./images/Shape 1.png" alt="" />
@@ -116,12 +128,15 @@
               <div class="line-div"></div>
               <p>01</p>
             </div>
+
           </div>
+
         </div>
 
         <div class="side-ellipse-01">
           <img src="./images/Ellipse 5.png" alt="" />
         </div>
+        
       </section>
 
       <!-- category section -->

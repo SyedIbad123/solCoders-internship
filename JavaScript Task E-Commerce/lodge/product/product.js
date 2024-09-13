@@ -2,16 +2,22 @@ let singleProductDiv = document.getElementById("product-div");
 let loader = document.getElementById("loader");
 let paginationItemDiv = document.getElementById("list-items");
 let searchInp = document.getElementById("search-inp");
-let shoppingCartSlider = document.getElementById("cart-slider");
-
-
-const idStore = [];
-
+let shoppingCartSlider = document.getElementById("cart-slider") || null;
+let subTotalDiv = document.getElementById("sub-total") || null;
 
 let currentQuery = "";
 
 document.addEventListener("DOMContentLoaded", (event) => {
   getProducts();
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  if (cart.length > 0) {
+    cart.forEach(async (item) => {
+      const url = `https://dummyjson.com/products/${item}`;
+      const res = await fetch(url);
+      const body = await res.json();
+      updateCartUI(body);
+    });
+  }
 });
 
 function debounce(func, delay) {
@@ -45,7 +51,6 @@ async function getProducts(products) {
 }
 
 function renderProducts(products) {
-
   singleProductDiv.innerHTML = products
     .map(
       (item) => `
@@ -66,7 +71,7 @@ async function searchProducts(e) {
   const query = e.target.value.toLowerCase();
   currentQuery = query;
   if (query === "") {
-    getProducts(); 
+    getProducts();
     return;
   }
   try {
@@ -76,7 +81,7 @@ async function searchProducts(e) {
     const body = await res.json();
     const result = body?.products;
     if (result?.length > 0) {
-      singleProductDiv.innerHTML = ""; 
+      singleProductDiv.innerHTML = "";
       renderProducts(result);
       pagination(body);
     } else {
@@ -144,7 +149,7 @@ function pagination(item, currentPage = 1) {
     link.addEventListener("click", function (e) {
       const page = parseInt(e.target.getAttribute("data-page"));
       if (currentQuery === "") {
-        getProductsByPage(page); 
+        getProductsByPage(page);
       } else {
         searchProductsByPage(currentQuery, page);
       }
@@ -168,7 +173,7 @@ function pagination(item, currentPage = 1) {
     if (currentPage > 1) {
       currentPage--;
       if (currentQuery === "") {
-        getProductsByPage(currentPage); 
+        getProductsByPage(currentPage);
       } else {
         searchProductsByPage(currentQuery, currentPage);
       }
@@ -180,7 +185,7 @@ function pagination(item, currentPage = 1) {
 async function getProductsByPage(page) {
   try {
     let skip = (page - 1) * 12;
-    let res = await fetch( 
+    let res = await fetch(
       `https://dummyjson.com/products?limit=12&skip=${skip}`
     );
     let body = await res.json();
@@ -207,33 +212,80 @@ async function searchProductsByPage(query, page) {
   }
 }
 
-function selectedCategory(categoryItem){
-  if(categoryItem){
+function selectedCategory(categoryItem) {
+  if (categoryItem) {
     window.location.href = `/category/category.html?category=${categoryItem}`;
   }
-};
+}
 
+async function handleCart(id) {
+  try {
+    const url = `https://dummyjson.com/products/${id}`;
+    const res = await fetch(url);
+    const body = await res.json();
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-async function handleCart(id){
-  idStore.push(id);
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i] === body?.id) {
+        alert("Product already in cart!");
+        return;
+      }
+    }
+    const cartItem = body?.id;
 
-  localStorage.setItem("id", idStore);
-  const localStorageIds = localStorage.getItem("id");
+    console.log(cartItem);
+    cart.push(cartItem);
+    localStorage.setItem("cart", JSON.stringify(cart));
 
-  const url = `https://dummyjson.com/products/${id}`
-  const res = await fetch(url);
-  const body = await res.json();
+    updateCartUI(body);
 
+    alert("Product added to cart successfully!");
+  } catch (err) {
+    console.error("Error adding to cart:", err.message);
+  }
+}
 
-  const cart = `
-    <div class="single-product">
-        <div class="single-productImgDiv">
-            <img class="single-productImg" src="${body?.images[0]}" alt="">
+function updateCartUI(cartItem) {
+  const cartHTML = `
+  <div class="cart-product">
+      <div class="cart-productImgDiv">
+        <img class="cart-productImg" src="${cartItem?.images[0]}" alt="${
+    cartItem?.title
+  }">
+       <div class="cart-productContent">
+            <h5>${cartItem?.title}</h5>
+            <p>$${Math.round(cartItem?.price)}</p>
         </div>
-        <h5>${body?.title}</h5>
-        <p>$${Math.round(body?.price)}</p>
-    </div>
-  `;
+      </div>
+      <p class="remove-btn" onclick="removeProduct(${cartItem?.id})">—</p>
+    </div>`;
 
-  shoppingCartSlider.innerHTML += cart;
+  shoppingCartSlider.innerHTML += cartHTML;
+}
+
+// let total = 0;
+
+// async function subTotal() {
+//   let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+//   for (let i = 0; i < cart.length; i++) {
+//     try {
+//       const res = await fetch(`https://dummyjson.com/products/${cart[i]}`);
+//       const product = await res.json();
+//       total += Math.round(product?.price);
+//     } catch (err) {
+//       console.error(`Error fetching product ${cart[i]}:`, err.message);
+//     }
+//   }
+
+  
+// }
+// subTotalDiv.innerHTML = `Subtotal: $${total}`;
+
+function removeProduct(id) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let newCart = cart?.filter((item) => item !== id);
+  localStorage.setItem("cart", JSON.stringify(newCart));
+  alert("Product removed from cart successfully!");
+  window.location.reload();
 }
