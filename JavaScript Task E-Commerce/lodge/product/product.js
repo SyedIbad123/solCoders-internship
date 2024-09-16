@@ -1,9 +1,10 @@
-let singleProductDiv = document.getElementById("product-div");
-let loader = document.getElementById("loader");
-let paginationItemDiv = document.getElementById("list-items");
-let searchInp = document.getElementById("search-inp");
-let shoppingCartSlider = document.getElementById("cart-slider") || null;
+let singleProductDiv = document.getElementById("product-div") || null;
+let loader = document.getElementById("loader") || null;
+let paginationItemDiv = document.getElementById("list-items") || null;
+let searchInp = document.getElementById("search-inp") || null;
+let shoppingCartSlider = document.getElementById("cart-productMain") || null;
 let subTotalDiv = document.getElementById("sub-total") || null;
+let emptyCartDiv = document.getElementById("empty-cart") || null;
 
 let currentQuery = "";
 
@@ -12,11 +13,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
   if (cart.length > 0) {
     cart.forEach(async (item) => {
-      const url = `https://dummyjson.com/products/${item}`;
-      const res = await fetch(url);
-      const body = await res.json();
-      updateCartUI(body);
+      if (item) {
+        const url = `https://dummyjson.com/products/${item}`;
+        const res = await fetch(url);
+        const body = await res.json();
+        updateCartUI(body);
+        subTotal();
+      }
     });
+  } else {
+    updateCartUI();
+    subTotal();
   }
 });
 
@@ -34,16 +41,22 @@ async function getProducts(products) {
     let body = await res.json();
 
     if (body?.products.length > 0) {
-      loader.style.display = "none";
+      if (loader) {
+        loader.style.display = "none";
+      }
       if (!products) {
         renderProducts(body?.products);
         pagination(body);
       } else if (products?.length > 0) {
-        singleProductDiv.innerHTML = "";
-        renderProducts(products);
+        if (singleProductDiv) {
+          singleProductDiv.innerHTML = "";
+          renderProducts(products);
+        }
       }
     } else {
-      loader.style.display = "block";
+      if (loader) {
+        loader.style.display = "block";
+      }
     }
   } catch (err) {
     console.error(err.message);
@@ -51,9 +64,10 @@ async function getProducts(products) {
 }
 
 function renderProducts(products) {
-  singleProductDiv.innerHTML = products
-    .map(
-      (item) => `
+  if (singleProductDiv) {
+    singleProductDiv.innerHTML = products
+      .map(
+        (item) => `
       <div class="single-product">
         <div class="single-productImgDiv">
             <img class="single-productImg" src="${item?.images[0]}" alt="">
@@ -63,8 +77,9 @@ function renderProducts(products) {
         <p>$${Math.round(item?.price)}</p>
         <button onclick="handleCart(${item?.id})">Add to cart</button>
       </div>`
-    )
-    .join("");
+      )
+      .join("");
+  }
 }
 
 async function searchProducts(e) {
@@ -81,9 +96,11 @@ async function searchProducts(e) {
     const body = await res.json();
     const result = body?.products;
     if (result?.length > 0) {
-      singleProductDiv.innerHTML = "";
-      renderProducts(result);
-      pagination(body);
+      if (singleProductDiv) {
+        singleProductDiv.innerHTML = "";
+        renderProducts(result);
+        pagination(body);
+      }
     } else {
       alert("No products found");
     }
@@ -92,7 +109,9 @@ async function searchProducts(e) {
   }
 }
 
-searchInp.addEventListener("input", debounce(searchProducts, 500));
+if (searchInp) {
+  searchInp.addEventListener("input", debounce(searchProducts, 500));
+}
 
 function pagination(item, currentPage = 1) {
   const totalPages = Math.ceil(item?.total / item?.limit);
@@ -124,7 +143,9 @@ function pagination(item, currentPage = 1) {
     }
   }
 
-  paginationItemDiv.innerHTML = "";
+  if (paginationItemDiv) {
+    paginationItemDiv.innerHTML = "";
+  }
 
   truncatePageNumbers.forEach((pageNum) => {
     let paginationItem;
@@ -138,48 +159,56 @@ function pagination(item, currentPage = 1) {
           <a data-page="${pageNum}">${pageNum}</a>
         </li>`;
     }
-    paginationItemDiv.innerHTML += paginationItem;
+    if (paginationItemDiv) {
+      paginationItemDiv.innerHTML += paginationItem;
+    }
   });
 
   let paginationList = document.querySelectorAll("#list-pagination a");
   let nextBtn = document.querySelector("#next-btn a");
   let prevBtn = document.querySelector("#prev-btn a");
 
-  paginationList.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      const page = parseInt(e.target.getAttribute("data-page"));
-      if (currentQuery === "") {
-        getProductsByPage(page);
-      } else {
-        searchProductsByPage(currentQuery, page);
-      }
-      pagination(item, page);
+  if (paginationList) {
+    paginationList.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        const page = parseInt(e.target.getAttribute("data-page"));
+        if (currentQuery === "") {
+          getProductsByPage(page);
+        } else {
+          searchProductsByPage(currentQuery, page);
+        }
+        pagination(item, page);
+      });
     });
-  });
+  }
 
-  nextBtn.addEventListener("click", function (e) {
-    if (currentPage < totalPages) {
-      currentPage++;
-      if (currentQuery === "") {
-        getProductsByPage(currentPage);
-      } else {
-        searchProductsByPage(currentQuery, currentPage);
+  if (nextBtn) {
+    nextBtn.addEventListener("click", function (e) {
+      if (currentPage < totalPages) {
+        currentPage++;
+        if (currentQuery === "") {
+          getProductsByPage(currentPage);
+        } else {
+          searchProductsByPage(currentQuery, currentPage);
+        }
+        pagination(item, currentPage);
       }
-      pagination(item, currentPage);
-    }
-  });
+    });
+  }
 
-  prevBtn.addEventListener("click", function (e) {
-    if (currentPage > 1) {
-      currentPage--;
-      if (currentQuery === "") {
-        getProductsByPage(currentPage);
-      } else {
-        searchProductsByPage(currentQuery, currentPage);
+  if (prevBtn) {
+    prevBtn.addEventListener("click", function (e) {
+      if (currentPage > 1) {
+        currentPage--;
+        if (currentQuery === "") {
+          getProductsByPage(currentPage);
+        } else {
+          searchProductsByPage(currentQuery, currentPage);
+        }
+        pagination(item, currentPage);
       }
-      pagination(item, currentPage);
-    }
-  });
+    });
+  }
 }
 
 async function getProductsByPage(page) {
@@ -220,72 +249,113 @@ function selectedCategory(categoryItem) {
 
 async function handleCart(id) {
   try {
-    const url = `https://dummyjson.com/products/${id}`;
-    const res = await fetch(url);
-    const body = await res.json();
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    for (let i = 0; i < cart.length; i++) {
-      if (cart[i] === body?.id) {
-        alert("Product already in cart!");
-        return;
+    if (id) {
+      const url = `https://dummyjson.com/products/${id}`;
+      const res = await fetch(url);
+      const body = await res.json();
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      for (let i = 0; i < cart.length; i++) {
+        if (cart[i] === body?.id) {
+          alert("Product already in cart!");
+          return;
+        }
       }
+      const cartItem = body?.id;
+      cart.push(cartItem);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Product added to cart successfully!");
+      updateCartUI(body);
     }
-    const cartItem = body?.id;
-
-    console.log(cartItem);
-    cart.push(cartItem);
-    localStorage.setItem("cart", JSON.stringify(cart));
-
-    updateCartUI(body);
-
-    alert("Product added to cart successfully!");
   } catch (err) {
     console.error("Error adding to cart:", err.message);
   }
 }
 
 function updateCartUI(cartItem) {
-  const cartHTML = `
-  <div class="cart-product">
-      <div class="cart-productImgDiv">
-        <img class="cart-productImg" src="${cartItem?.images[0]}" alt="${
-    cartItem?.title
-  }">
-       <div class="cart-productContent">
-            <h5>${cartItem?.title}</h5>
-            <p>$${Math.round(cartItem?.price)}</p>
-        </div>
-      </div>
-      <p class="remove-btn" onclick="removeProduct(${cartItem?.id})">—</p>
-    </div>`;
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  shoppingCartSlider.innerHTML += cartHTML;
+  if (cart.length == 0) {
+    const emptyCartHTML = `
+        <div class="empty-cart">
+          <p>Cart is Empty</p>
+        </div>`;
+    if (emptyCartDiv) {
+      emptyCartDiv.innerHTML = emptyCartHTML;
+    }
+    subTotal();
+  }
+
+  if(cartItem){
+    const cartHTML = `
+      <div class="cart-product">
+          <div class="cart-productImgDiv">
+            <img class="cart-productImg" src="${cartItem?.images[0]}" alt="${
+      cartItem?.title
+    }">
+            <div class="cart-productContent">
+                <h5>${cartItem?.title}</h5>
+                <p>$${Math.round(cartItem?.price)}</p>
+            </div>
+          </div>
+          <p class="remove-btn" onclick="removeProduct(${cartItem?.id})">—</p>
+      </div>`;
+  
+    if (cart.length > 0) {
+      if (shoppingCartSlider) { 
+        if(emptyCartDiv){
+          emptyCartDiv.innerHTML = "";
+        }
+        shoppingCartSlider.innerHTML += cartHTML;
+      }
+    }
+  }
+  subTotal();
 }
 
-// let total = 0;
+let total = 0;
 
-// async function subTotal() {
-//   let cart = JSON.parse(localStorage.getItem("cart")) || [];
+async function subTotal() {
+  total = 0;
 
-//   for (let i = 0; i < cart.length; i++) {
-//     try {
-//       const res = await fetch(`https://dummyjson.com/products/${cart[i]}`);
-//       const product = await res.json();
-//       total += Math.round(product?.price);
-//     } catch (err) {
-//       console.error(`Error fetching product ${cart[i]}:`, err.message);
-//     }
-//   }
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let prices = JSON.parse(localStorage.getItem("cartPrices")) || {};
 
-  
-// }
-// subTotalDiv.innerHTML = `Subtotal: $${total}`;
+  for (let i = 0; i < cart.length; i++) {
+    if (!prices[cart[i]]) {
+      try {
+        const res = await fetch(`https://dummyjson.com/products/${cart[i]}`);
+        const product = await res.json();
+        prices[cart[i]] = Math.round(product?.price);
+        localStorage.setItem("cartPrices", JSON.stringify(prices));
+      } catch (err) {
+        console.error(`Error fetching product ${cart[i]}:`, err.message);
+      }
+    }
+    total += prices[cart[i]];
+  }
+
+  if (subTotalDiv) {
+    subTotalDiv.innerHTML = `<p>Subtotal: $${total}</p>`;
+  }
+}
 
 function removeProduct(id) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  let newCart = cart?.filter((item) => item !== id);
-  localStorage.setItem("cart", JSON.stringify(newCart));
-  alert("Product removed from cart successfully!");
-  window.location.reload();
+
+  if (id) {
+    let newCart = cart.filter((item) => item !== id);
+    localStorage.removeItem(id);
+    if (newCart) {
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      alert("Product removed from cart successfully!");
+      updateCartUI();
+    }
+    const productElement = document.querySelector(
+      `.remove-btn[onclick="removeProduct(${id})"]`
+    ).parentElement;
+    if (productElement) {
+      productElement.remove();
+    }
+    subTotal();
+  }
 }

@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./product/product.css">
     <link rel="stylesheet" href="index.css" />
     <script src="./home.js" defer></script>
     <script src="./product/product.js" defer></script>
     <title>Home</title>
   </head>
   <body>
-    <!-- header section  -->
+    <!-- header section  --> 
 
     <header class="header">
-
       <div class="linesDiv">
         <span></span>
         <span></span>
@@ -20,9 +20,7 @@
       </div>
 
       <nav class="navbar">
-
         <ul class="nav-items">
-
           <div class="nav-logoDiv">
             <img
               class="nav-logo"
@@ -36,7 +34,6 @@
             <li><a href="/index.html">home</a></li>
             <li><a href="/product/product.html">shop</a></li>
             <li><a href="/cart/cart.html">cart</a></li>
-           
 
             <div class="dropdown">
               <button class="dropbtn" onclick="showDropdown()">
@@ -59,27 +56,27 @@
               />
             </li>
           </div>
-
-         
         </ul>
       </nav>
     </header>
 
     <main class="main" id="main">
-
       <!-- cart slider -->
       <section class="cartSlider-section" id="cart-slider">
-
-        <a href="javascript:void(0)" class="closebtn" onclick="closeSlider()">&times;</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSlider()"
+          >&times;</a
+        >
         <h2>Cart</h2>
+        <div id="cart-productMain" class="cart-productMain"></div>
+
+        <div class="sub-total" id="sub-total"></div>
+        <div class="edit-product"><button onclick="window.location.href='/cart/cart.html'">Edit Cart</button></div>
 
       </section>
 
       <!-- banner section  -->
       <section class="banner-section">
-
         <div class="banner-content">
-
           <div class="new-collectionDiv">
             <h3 class="new-collection">New Collection</h3>
             <div class="new-collection-line"></div>
@@ -94,14 +91,12 @@
           </p>
 
           <div class="banner-btn">
-            <button>Shop Now</button>
+            <button onclick="window.location.href='/product/product.html'">Shop Now</button>
             <p>01</p>
           </div>
-          
         </div>
 
         <div class="banner-imgDiv">
-
           <div class="banner-bgImg">
             <img class="front-img" src="./images/Shape 1 copy.png" alt="" />
             <img class="back-img" src="./images/Shape 1.png" alt="" />
@@ -128,15 +123,12 @@
               <div class="line-div"></div>
               <p>01</p>
             </div>
-
           </div>
-
         </div>
 
         <div class="side-ellipse-01">
           <img src="./images/Ellipse 5.png" alt="" />
         </div>
-        
       </section>
 
       <!-- category section -->
@@ -184,7 +176,7 @@
           <div class="info">
             <h2>special</h2>
             <h3>wedding ring</h3>
-            <button>Buy Now</button>
+            <button onclick="window.location.href='/product/product.html'">Buy Now</button>
           </div>
 
           <div class="img-div">
@@ -259,7 +251,7 @@
           </div>
 
           <div>
-            <img src="./images/Ellipse 5 copy 3.png" alt="" />
+            <img class="contact-ellipse" src="./images/Ellipse 5 copy 3.png" alt="" />
           </div>
         </div>
       </section>
@@ -321,6 +313,5 @@
         </div>
       </section>
     </footer>
-
   </body>
 </html>
