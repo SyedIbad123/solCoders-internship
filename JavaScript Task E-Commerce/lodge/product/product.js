@@ -70,7 +70,7 @@ function renderProducts(products) {
         (item) => `
       <div class="single-product">
         <div class="single-productImgDiv">
-            <img class="single-productImg" src="${item?.images[0]}" alt="">
+            <img class="single-productImg" src="${item?.images[0]}" onclick="singleProduct(${item?.id})" alt="">
         </div>
         <h5>${item?.title}</h5>
         <a onclick="selectedCategory('${item?.category}')">${item?.category}</a>
@@ -358,4 +358,9 @@ function removeProduct(id) {
     }
     subTotal();
   }
+}
+
+
+function singleProduct(id){
+  window.location.href = `/singleProduct/singleProduct.html?productId=${id}`;
 }

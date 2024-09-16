@@ -73,3 +73,6 @@ function openSlider() {
 function closeSlider() {
   document.getElementById("cart-slider").style.width = "0";
 }
+
+document.getElementById("shopping-cartImg").addEventListener('click', openSlider);
+document.getElementById("shopping-cartImgDivMain").addEventListener('click', openSlider);

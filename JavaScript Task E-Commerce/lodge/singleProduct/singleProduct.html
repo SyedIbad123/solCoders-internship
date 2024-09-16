@@ -4,24 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../index.css" />
-    <link rel="stylesheet" href="product.css" />
-    <script src="product.js" defer></script>
+    <link rel="stylesheet" href="singleProduct.css" />
+    <script src="./singleProduct.js" defer></script>
     <script src="../home.js" defer></script>
-    <title>Products</title>
+    <title>Product Page</title>
   </head>
   <body>
-    <!-- header --> 
     <header class="header">
-
       <div class="linesDiv">
-
-
         <span></span>
         <span></span>
         <span></span>
       </div>
-       
-      
+
       <nav class="navbar">
         <ul class="nav-items">
           <div class="nav-logoDiv">
@@ -35,8 +30,8 @@
 
           <div class="nav-links">
             <li><a href="/index.html">home</a></li>
-            <li><a href="">shop</a></li>
-            <li><a href="../cart/cart.html">cart</a></li>
+            <li><a href="/product/product.html">shop</a></li>
+            <li><a href="/cart/cart.html">cart</a></li>
 
             <div class="dropdown">
               <button class="dropbtn" onclick="showDropdown()">
@@ -49,7 +44,7 @@
           </div>
 
           <div>
-            <li>
+            <!-- <li>
               <img
                 class="shopping-cartImg"
                 id="shopping-cartImg"
@@ -57,76 +52,75 @@
                 alt="shopping-cart"
                 onclick="openSlider()"
               />
-            </li>
+            </li> -->
           </div>
         </ul>
       </nav>
     </header>
 
     <main>
-
-      <div class="shopping-cartImgDivMain">
-        <img class="shopping-cartImgMain" src="../images/shopping-cart.png" alt=""  onclick="openSlider()" >
-      </div>
-
-
-      <div class="loader" id="loader"></div>
-
-      <!-- cart slider --> 
+      <!-- cart slider -->
       <section class="cartSlider-section" id="cart-slider">
         <a href="javascript:void(0)" class="closebtn" onclick="closeSlider()"
           >&times;</a
-        > 
+        >
         <h2>Cart</h2>
-
         <div class="empty-cart" id="empty-cart"></div>
 
         <div id="cart-productMain" class="cart-productMain"></div>
 
         <div class="sub-total" id="sub-total"></div>
-        <div class="edit-product"><button onclick="window.location.href='/cart/cart.html'">Edit Cart</button></div>
+        <div class="edit-product">
+          <button onclick="window.location.href='/cart/cart.html'">
+            Edit Cart
+          </button>
+        </div>
       </section>
 
-      <!-- product section  -->
-      <section class="product-section">
+      <section class="singleProduct-section">
         <div class="banner-imgDiv">
           <div class="banner-bgImg">
-            <img class="front-img" src="../images/Shape 1 copy.png" alt="" />
-            <img class="back-img" src="../images/Shape 1.png" alt="" />
+            <img
+              class="front-img"
+              src="../images/Shape 1 copy.png"
+              alt="Banner Front Image"
+            />
+            <img
+              class="back-img"
+              src="../images/Shape 1.png"
+              alt="Banner Back Image"
+            />
           </div>
         </div>
 
-        <div class="product-heading">
-          <h1>Products</h1>
-        </div>
-
-        <div class="search-div">
-          <input
-            id="search-inp"
-            class="search-input"
-            type="text"
-            placeholder="Search..."
-            name="search-img"
-            for="search-img"
-          />
-          <div>
-            <img id="search-img" src="../images/_.png" alt="" />
+        <section class="product-card-container">
+          <!-- Product Information Section -->
+          <div id="product-info" class="product-card">
+            <h1 id="product-title" class="title"></h1>
+            <div class="product-content">
+              <div class="product-image">
+                <img id="product-thumbnail" alt="Product Image" />
+              </div>
+              <div class="product-details">
+                <h2>Description</h2>
+                <p id="product-description"></p>
+                <h2>Category</h2>
+                <p id="product-category"></p>
+                <h2>Price</h2>
+                <div id="product-price"></div>
+                <h2>Quantity</h2>
+                <p id="product-quantity"></p>
+                <div id="addToCartSingleProduct">
+                    
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div class="product-div" id="product-div"></div>
-
-        <div class="pagination-div" id="pagination-div">
-          <ul class="pagination-list">
-            <li id="prev-btn"><a>Previous</a></li>
-            <div class="list-items" id="list-items"></div>
-            <li id="next-btn"><a>Next</a></li>
-          </ul>
-        </div>
+        </section>
       </section>
     </main>
 
-    <!-- footer section  -->
+
     <footer class="footer">
       <section class="first-section">
         <div class="lodge-div">
