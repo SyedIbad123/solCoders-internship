@@ -61,6 +61,13 @@
     </header>
 
     <main class="main" id="main">
+
+      <div class="shopping-cartImgDivMain">
+        <img class="shopping-cartImgMain" src="./images/shopping-cart.png" alt=""  onclick="openSlider()" >
+      </div>
+
+
+
       <!-- cart slider -->
       <section class="cartSlider-section" id="cart-slider">
         <a href="javascript:void(0)" class="closebtn" onclick="closeSlider()"
@@ -231,10 +238,10 @@
         <div class="contact-div">
           <div class="form-div">
             <form>
-              <input type="text" placeholder="Name" />
-              <input type="email" placeholder="Email" />
-              <input type="tel" placeholder="Phone" />
-              <textarea name="" id="" placeholder="Message"></textarea>
+              <input id="name" name="name" type="text" placeholder="Name" />
+              <input id="email" name="email" type="email" placeholder="Email" />
+              <input id="phone" name="phone" type="tel" placeholder="Phone" />
+              <textarea id="message" name="message" name="" id="" placeholder="Message"></textarea>
               <button class="form-btn">send</button>
             </form>
           </div>
@@ -289,8 +296,8 @@
         <div class="second-sectionDiv">
           <h4>newsletter</h4>
           <div></div>
-          <label for="">Enter Your Email</label>
-          <input type="email" placeholder="john@gmail.com" />
+          <label for="email">Enter Your Email</label>
+          <input type="email" name="email" placeholder="john@gmail.com" />
           <button>subscribe</button>
         </div>
       </section>

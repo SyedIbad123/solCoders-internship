@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart</title>
-    <link rel="stylesheet" href="cart.css" />
     <link rel="stylesheet" href="../index.css" />
+    <link rel="stylesheet" href="cart.css" />
     <script src="cart.js" defer></script>
     <script src="../home.js" defer></script>
     <script src="../product/product.js" defer></script>
@@ -43,19 +43,31 @@
               <div class="dropdown-content" id="myDropdown"></div>
             </div>
           </div>
+          <div>
+            <li>
+              <!-- <img
+                class="shopping-cartImg"
+                id="shopping-cartImg"
+                src="../images/shopping-cart.png"
+                alt="shopping-cart"
+                onclick="openSlider()"
+              /> -->
+            </li>
+          </div>
 
-         
+
         </ul>
       </nav>
     </header>
     <!-- main section -->
     <main class="main" id="main">
+
       <div class="loader" id="loader"></div>
 
       <!-- banner section  -->
       <section class="cart-section" id="cart-section">
         <div class="banner-imgDiv">
-          <div class="banner-bgImg">
+          <div class="cart-bgImg">
             <img class="front-img" src="../images/Shape 1 copy.png" alt="" />
             <img class="back-img" src="../images/Shape 1.png" alt="" />
           </div>
@@ -67,7 +79,7 @@
 
         <div class="cart-div" id="cart-div"></div>
 
-        <div class="sub-total" id="sub-total"></div>
+        <div class="sub-total" id="sub-total" style="font-weight: bold; font-size: 1.5rem; text-align: right; width: 63vw;"></div>
       </section>
     </main>
 

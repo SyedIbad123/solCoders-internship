@@ -62,15 +62,8 @@ function selectedCategory(categoryItem) {
   }
 }
 
-const mainSection = document.getElementById("main");
-
-if (onclick === "openSlider()") {
-  mainSection.classList.add("backdropClass");
-} else if (onclick === "closeSlider()") {
-  mainSection.classList.remove("backdropClass");
-}
-
 function openSlider() {
+  console.log("openslider called");
   const slider = document.getElementById("cart-slider");
   if(slider){
     slider.style.width = "400px";

@@ -11,7 +11,6 @@
   </head>
   <body>
     <header class="header">
-
       <div class="linesDiv">
         <span></span>
         <span></span>
@@ -32,7 +31,6 @@
             <li><a href="/index.html">home</a></li>
             <li><a href="/product/product.html">shop</a></li>
             <li><a href="../cart/cart.html">cart</a></li>
-        
 
             <div class="dropdown">
               <button class="dropbtn" onclick="showDropdown()">
@@ -60,11 +58,20 @@
     </header>
 
     <main>
+      <div class="shopping-cartImgDivMain">
+        <img
+          class="shopping-cartImgMain"
+          src="../images/shopping-cart.png"
+          alt=""
+          onclick="openSlider()"
+        />
+      </div>
 
       <!-- cart slider -->
       <section class="cartSlider-section" id="cart-slider">
-
-        <a href="javascript:void(0)" class="closebtn" onclick="closeSlider()">&times;</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeSlider()"
+          >&times;</a
+        >
 
         <h2>Cart</h2>
 
@@ -73,8 +80,11 @@
         <div id="cart-productMain" class="cart-productMain"></div>
 
         <div class="sub-total" id="sub-total"></div>
-        <div class="edit-product"><button onclick="window.location.href='/cart/cart.html'">Edit Cart</button></div>
-
+        <div class="edit-product">
+          <button onclick="window.location.href='/cart/cart.html'">
+            Edit Cart
+          </button>
+        </div>
       </section>
 
       <div class="loader" id="loader"></div>
@@ -93,8 +103,6 @@
 
         <div class="category-div" id="selectedCategory-div"></div>
       </section>
-
-
     </main>
 
     <footer class="footer">
