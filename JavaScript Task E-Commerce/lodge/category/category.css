@@ -243,3 +243,69 @@
   color: rgb(0, 0, 0);
   font-size: 1.5rem;
 }
+
+
+
+@media only screen and (max-width: 600px) {
+
+  .selected-categorySection {
+    margin-top: 0;
+    height: 770vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+  }
+
+  .category-heading {
+    position: absolute;
+    top: 2%;
+    left: 10%;
+    font-size: 1.5rem;
+  }
+
+  .banner-imgDiv {
+    position: relative;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .banner-bgImg {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 50vh;
+    left: -28%;
+    top: -744%;
+  }
+
+  .front-img {
+    z-index: 1;
+    position: absolute;
+    width: 100vw;
+    height: 50vh;
+    top: 0;
+  }
+
+  .back-img {
+    position: absolute;
+    width: 99vw;
+    height: 50vh;
+  }
+
+  .category-div{
+    top: 4%;
+  }
+
+  .single-product{
+    width: 90vw;
+  } 
+
+}

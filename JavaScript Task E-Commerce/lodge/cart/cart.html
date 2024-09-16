@@ -4,14 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart</title>
-    <link rel="stylesheet" href="../index.css" />
     <link rel="stylesheet" href="cart.css" />
+    <link rel="stylesheet" href="../index.css" />
     <script src="cart.js" defer></script>
     <script src="../home.js" defer></script>
+    <script src="../product/product.js" defer></script>
   </head>
   <body>
     <!-- header -->
     <header class="header">
+      <div class="linesDiv">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <nav class="navbar">
         <ul class="nav-items">
           <div class="nav-logoDiv">
@@ -38,27 +44,12 @@
             </div>
           </div>
 
-          <div>
-            <li>
-              <img
-                class="shopping-cartImg"
-                id="shopping-cartImg"
-                src="../images/shopping-cart.png"
-                alt="shopping-cart"
-                onclick="openSlider()"
-              />
-            </li>
-          </div>
-
-          <div>
-            <img src="../images/_.png" alt="" />
-          </div>
+         
         </ul>
       </nav>
     </header>
     <!-- main section -->
     <main class="main" id="main">
-
       <div class="loader" id="loader"></div>
 
       <!-- banner section  -->
@@ -77,11 +68,7 @@
         <div class="cart-div" id="cart-div"></div>
 
         <div class="sub-total" id="sub-total"></div>
-
-
       </section>
-
-
     </main>
 
     <!-- footer section  -->
@@ -139,7 +126,5 @@
         </div>
       </section>
     </footer>
-
-    
   </body>
 </html>

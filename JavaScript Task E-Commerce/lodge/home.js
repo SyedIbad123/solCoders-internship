@@ -71,7 +71,10 @@ if (onclick === "openSlider()") {
 }
 
 function openSlider() {
-  document.getElementById("cart-slider").style.width = "400px";
+  const slider = document.getElementById("cart-slider");
+  if(slider){
+    slider.style.width = "400px";
+  }
 }
 
 function closeSlider() {

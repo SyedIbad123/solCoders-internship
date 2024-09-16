@@ -2,6 +2,8 @@ let singleCartDiv = document.getElementById("cart-div");
 let cartSection = document.getElementById("cart-section");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let loader = document.getElementById("loader") || null;
+let subTotalDiv = document.getElementById("sub-total") || null;
+
 
 document.addEventListener("DOMContentLoaded", async (event) => {
   if (loader) {
@@ -16,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async (event) => {
         const body = await res.json();
 
         if (body) {
-          if (loader) {
+          if (loader) { 
             loader.style.display = "none";
           }
           updateCartUI(body);
@@ -34,6 +36,9 @@ document.addEventListener("DOMContentLoaded", async (event) => {
     }
     singleCartDiv.innerHTML = `<p class="cart-empty">Cart is Empty</p>`;
   }
+
+  subTotal();
+
 });
 
 function updateCartUI(cartItem) {
@@ -84,5 +89,33 @@ function removeProduct(id) {
         productElement.remove();
       }
     }
+  }
+}
+
+
+let total = 0;
+
+async function subTotal() {
+  total = 0;
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let prices = JSON.parse(localStorage.getItem("cartPrices")) || {};
+
+  for (let i = 0; i < cart.length; i++) {
+    if (!prices[cart[i]]) {
+      try {
+        const res = await fetch(`https://dummyjson.com/products/${cart[i]}`);
+        const product = await res.json();
+        prices[cart[i]] = Math.round(product?.price);
+        localStorage.setItem("cartPrices", JSON.stringify(prices));
+      } catch (err) {
+        console.error(`Error fetching product ${cart[i]}:`, err.message);
+      }
+    }
+    total += prices[cart[i]];
+  }
+
+  if (subTotalDiv) {
+    subTotalDiv.innerHTML = `<p>Subtotal: $${total}</p>`;
   }
 }

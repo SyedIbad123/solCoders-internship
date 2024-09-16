@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         const body = await res.json();
         updateCartUI(body);
         subTotal();
-      }
+      } 
     });
   } else {
     updateCartUI();
