@@ -66,7 +66,7 @@ function openSlider() {
   console.log("openslider called");
   const slider = document.getElementById("cart-slider");
   if(slider){
-    slider.style.width = "400px";
+    slider.style.width = "270px";
   }
 }
 
